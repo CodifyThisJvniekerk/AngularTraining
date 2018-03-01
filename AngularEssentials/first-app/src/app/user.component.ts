@@ -1,18 +1,13 @@
-import { Component } from '@angular/core'
-import { templateSourceUrl } from '@angular/compiler';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user',
   template: `
-  <input type="text" (input)="onUserInput($event)" [value]="username"/>
+  <input type="text" [(ngModel)]='name' />
   <p> User Component Here</p>
-  <p> hello {{ username }} </p>`
+  <p> hello {{ name }} </p>`
 })
 
 export class UserComponent {
-  username = 'Johan'
-
-  onUserInput(event): void {
-    this.username = event.target.value;
-  }
+  name = 'Johan'
 }
