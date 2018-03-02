@@ -1,0 +1,12 @@
+<div>
+  <p>This is the dashboard component</p>
+  <p>Currently {{loadState}}</p>
+</div>
+
+<div>
+  <div style="display: inline">To change the loading state change the text in the text box or click the button below.</div>
+  <div style="display: inline"><input type="text" [(ngModel)]="loadState"/>
+</div>
+
+</div>
+<div><input type="button" value="Change Loading State" (click)="statechangeclicked()" /></div>
