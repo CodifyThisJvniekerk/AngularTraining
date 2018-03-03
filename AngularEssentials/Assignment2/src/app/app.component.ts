@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  items: string[] = ['Apples', 'Bananas', 'Cherries'];
+  onItemAdded(event: string) {
+    this.items.push(event);
+  }
 }

@@ -20,4 +20,11 @@
   </li>
   <li>Output the array in the method where you add items by calling console.log(yourArray)</li>
 </ol>
-
+<div>
+  <app-cart-component (ItemAdded)="onItemAdded($event);"></app-cart-component>
+</div>
+<ul>
+  <li *ngFor="let item of items">
+    {{item}}
+  </li>
+</ul>
