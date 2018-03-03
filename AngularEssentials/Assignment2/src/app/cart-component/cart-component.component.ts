@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cart-component',
@@ -6,6 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./cart-component.component.css']
 })
 export class CartComponentComponent implements OnInit {
+  @Input() Items: string[];
   itemToAdd: string;
   @Output() ItemAdded = new EventEmitter<string>();
   constructor() { }

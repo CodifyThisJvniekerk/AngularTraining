@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  items: string[] = ['Apples', 'Bananas', 'Cherries'];
+  AppItems: string[] = ['Apple', 'Bananas', 'Cheries']
+  itemadded = '';
   onItemAdded(event: string) {
-    this.items.push(event);
+    this.AppItems.push(event);
+    this.itemadded = event + ' was add to cart.';
   }
 }

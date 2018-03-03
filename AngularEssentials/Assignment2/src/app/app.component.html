@@ -21,10 +21,7 @@
   <li>Output the array in the method where you add items by calling console.log(yourArray)</li>
 </ol>
 <div>
-  <app-cart-component (ItemAdded)="onItemAdded($event);"></app-cart-component>
+  <app-cart-component (ItemAdded)="onItemAdded($event);" [Items]="AppItems" ></app-cart-component>
+  <div style="color: green;">{{itemadded}}</div>
 </div>
-<ul>
-  <li *ngFor="let item of items">
-    {{item}}
-  </li>
-</ul>
+
