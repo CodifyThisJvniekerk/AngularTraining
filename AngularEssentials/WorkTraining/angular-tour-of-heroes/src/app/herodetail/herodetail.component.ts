@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./herodetail.component.css']
 })
 export class HerodetailComponent implements OnInit {
-  @Input() hero: Hero;
+  hero: Hero;
 
   constructor(private route: ActivatedRoute,
     private heroService: HeroService,
@@ -25,8 +25,14 @@ export class HerodetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
   }
-goBack(): void {
-  this.location.back();
-}
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+  }
 
 }
