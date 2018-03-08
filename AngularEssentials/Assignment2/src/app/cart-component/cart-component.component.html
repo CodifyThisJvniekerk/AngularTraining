@@ -1,9 +1,11 @@
 <p>
-  <input type="text" [(ngModel)]="itemToAdd" /> <input type="button" value="Add Item" (click)="onAddItemClicked();">
+  <input type="text" [(ngModel)]="itemToAdd" /> <input class="btn btn btn-primary" type="button" value="Add Item" (click)="onAddItemClicked();">
 </p>
+<hr/>
+  <ul class="list-group">
+      <li *ngFor="let item of Items">
+          {{item}}
+          </li>
+  </ul>
 
-<ul>
-  <li *ngFor="let item of Items">
-    {{item}}
-  </li>
-</ul>
+
