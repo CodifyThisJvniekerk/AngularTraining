@@ -9,8 +9,6 @@ import { HeroService } from '../hero.service';
 })
 export class HeroeslistComponent implements OnInit {
   heroes: Hero[];
-  selectedHero: Hero;
-  @Output() selectedHeroChanged = new EventEmitter<Hero>();
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
@@ -19,12 +17,6 @@ export class HeroeslistComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
-  }
-  onSelect(hero) {
-    if (this.selectedHero === undefined || this.selectedHero.id !== hero.id) {
-      this.selectedHero = hero;
-      this.selectedHeroChanged.emit(hero);
-    }
   }
 
 }
