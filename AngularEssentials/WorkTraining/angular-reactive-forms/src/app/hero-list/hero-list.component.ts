@@ -28,5 +28,8 @@ export class HeroListComponent implements OnInit {
     this.selectedHero = undefined;
   }
 
-  select(hero: Hero) { this.selectedHero = hero; }
+  select(hero: Hero) {
+    this.selectedHero = hero;
+    console.log(hero.name + ' selected ');
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray  } from '@angular/forms';
 import { states, Address, Hero } from '../data-model';
+import { HeroService } from '../hero.service';
 
 
 @Component({
@@ -9,10 +10,11 @@ import { states, Address, Hero } from '../data-model';
   styleUrls: ['./herodetail.component.css']
 })
 export class HerodetailComponent implements OnInit, OnChanges {
-  @Input() hero: Hero;
+  @Input() hero: Hero = new Hero();
   heroForm: FormGroup;
   states = states;
-  constructor(private fb: FormBuilder) {
+  nameChangeLog: string[] = [];
+  constructor(private fb: FormBuilder, private heroService: HeroService ) {
     this.createform();
   }
   ngOnInit() {
@@ -20,9 +22,10 @@ export class HerodetailComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.heroForm.reset({
-      name: this.hero.name,
-      address: this.hero.addresses[0] || new Address()
+      name: this.hero.name
     });
+    this.setAddresses(this.hero.addresses);
+    this.logNameChange();
   }
 
 
@@ -48,4 +51,37 @@ export class HerodetailComponent implements OnInit, OnChanges {
   addLair() {
     this.secretLairs.push(this.fb.group(new Address()));
   }
+
+  logNameChange() {
+    const nameControl = this.heroForm.get('name');
+    nameControl.valueChanges.forEach(
+      (value: string) => this.nameChangeLog.push(value)
+    );
+  }
+
+  onSubmit() {
+    this.hero = this.prepareSaveHero();
+    this.heroService.updateHero(this.hero).subscribe(/* error handling */);
+    this.ngOnChanges();
+  }
+
+  prepareSaveHero(): Hero {
+    const formModel = this.heroForm.value;
+
+    // deep copy of _form model_ lairs
+    const secretLairsDeepCopy: Address[] = formModel.secretLairs.map(
+      (address: Address) => Object.assign({}, address)
+    );
+
+    // return new `Hero` object containing a combination of original hero value(s)
+    // and deep copies of changed _form model_ values
+    const saveHero: Hero = {
+      id: this.hero.id,
+      name: formModel.name as string,
+      // addresses: formModel.secretLairs // <-- bad!
+      addresses: secretLairsDeepCopy
+    };
+    return saveHero;
+  }
+  revert() { this.ngOnChanges(); }
 }

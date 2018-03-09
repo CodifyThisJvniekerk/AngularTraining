@@ -49,8 +49,9 @@
       <input type="checkbox" formControlName="sidekick">I have a sidekick.
     </label>
   </div>
-  {{heroForm.value | json}}
-  <p>Street value: {{ heroForm.get('address.street').value}}</p>
+  <button type="submit"
+            [disabled]="heroForm.pristine" class="btn btn-success">Save</button> &nbsp;
+    <button type="reset" (click)="revert()" [disabled]="heroForm.pristine" class="btn btn-danger">Revert</button>
   <button (click)="addLair()" type="button">Add a Secret Lair</button>
 
 </form>
