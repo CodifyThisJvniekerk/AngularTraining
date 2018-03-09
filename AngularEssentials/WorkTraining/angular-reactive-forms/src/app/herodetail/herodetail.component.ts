@@ -64,6 +64,7 @@ export class HerodetailComponent implements OnInit, OnChanges {
     this.heroService.updateHero(this.hero).subscribe(/* error handling */);
     this.ngOnChanges();
   }
+
   prepareSaveHero(): Hero {
     const formModel = this.heroForm.value;
 
