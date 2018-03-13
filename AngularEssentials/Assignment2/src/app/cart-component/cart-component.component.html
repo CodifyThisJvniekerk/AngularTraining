@@ -1,5 +1,8 @@
 <p>
-  <input type="text" [(ngModel)]="itemToAdd" /> <input class="btn btn-primary" type="button" value="Add Item" (click)="onAddItemClicked();">
+  <input type="text" [(ngModel)]="itemToAdd" /> <input class="btn" type="button"
+  [ngClass]="{'btn-primary': itemToAdd  !== '', 'btn-default': itemToAdd === '' }"
+  value="Add Item"
+  (click)="onAddItemClicked();">
 </p>
 <hr/>
   <ul class="list-group">
