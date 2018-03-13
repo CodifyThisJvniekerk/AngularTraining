@@ -1,6 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <app-cart-component (ItemAdded)="onItemAdded($event);" [Items]="AppItems" ></app-cart-component>
+<div class="container" style="margin: 20px">
+  <div class="row">
+    <div class="col-xs-12">
+        <app-cart-component [Items]="AppItems" (ItemAdded)="onItemAdded($event);"  ></app-cart-component>
+    </div>
+  </div>
   <div style="color: green;">{{itemadded}}</div>
 </div>
 
