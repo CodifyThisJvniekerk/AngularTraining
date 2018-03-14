@@ -20,7 +20,7 @@ export class TabsComponent implements OnInit {
   ngOnInit() {
   }
 
-  choseList(side: string) {
+  onChoose(side: string) {
     this.chosenList = side;
   }
 
