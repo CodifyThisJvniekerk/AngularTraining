@@ -9,16 +9,16 @@ import { StarWarsService } from '../star-wars-service';
 export class ItemComponent implements OnInit {
   @Input() character;
   @Output() sideAssigned = new EventEmitter<{name: string, side: string}>()
-  constructor() { }
+  swService: StarWarsService;
+  constructor(swService: StarWarsService) {
+    this.swService = swService;
+   }
 
   ngOnInit() {
   }
 
   onAssign(sideToAssign: string) {
-    // this.character.side = side;
-    // this.sideAssigned.emit()
-    const swService = new StarWarsService()
-    swService.updateCharaterSide({name: this.character.name, side: sideToAssign});
+    this.swService.updateCharaterSide({name: this.character.name, side: sideToAssign});
   }
 
 }

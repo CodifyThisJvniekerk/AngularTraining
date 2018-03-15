@@ -11,19 +11,22 @@ export class TabsComponent implements OnInit {
 
   chosenList = 'all';
 
-  constructor() { }
+  swService: StarWarsService;
+
+  constructor(swService: StarWarsService) {
+    this.swService = swService;
+   }
 
   ngOnInit() {
+    this.getCharacters();
   }
 
   onChoose(side: string) {
-    const swService = new StarWarsService();
-    this.characters = swService.getCharacters(side);
+    this.chosenList = side;
+    this.getCharacters();
   }
 
-  getCharacters(chosenList: string): any {
-    const swService = new StarWarsService();
-    this.characters = swService.getCharacters(chosenList);
-    return this.characters;
+  getCharacters(): any {
+   this.characters = this.swService.getCharacters(this.chosenList)
   }
 }
