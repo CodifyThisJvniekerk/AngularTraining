@@ -1,8 +1,6 @@
 <ul class="nav nav-pills">
-  <li role="presentation"
-  routerLinkActive="active"
-  [routerLinkActiveOptions]="{exact: true}">
-    <a routerLink="/" >Star Wars Characters</a></li>
+  <li role="presentation" routerLinkActive="active">
+    <a [routerLink]="'/characters'" >Star Wars Characters</a></li>
   <li role="presentation" routerLinkActive="active">
     <a [routerLink]="'/new-Character'">Create Character</a></li>
 </ul>
