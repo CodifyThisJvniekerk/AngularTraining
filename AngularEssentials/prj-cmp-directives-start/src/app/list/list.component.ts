@@ -14,6 +14,7 @@ export class ListComponent implements OnInit, OnDestroy {
   swService: StarWarsService;
   loadedsite = 'all';
   subscription: Subscription
+  subCharactersFetched: Subscription
 
   constructor(activeRoute: ActivatedRoute, swservice: StarWarsService) {
     this.activatedRoute = activeRoute;
@@ -21,6 +22,7 @@ export class ListComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    this.swService.fetchCharaters();
     this.activatedRoute.params.subscribe(
       (params) => {
         this.loadedsite = params.side;
