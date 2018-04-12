@@ -10,7 +10,7 @@ const routes = [
   { path: '', redirectTo: 'all', pathMatch: 'full' },
   { path: ':side', component: ListComponent }
   ] },
-  {path: 'new-Character', loadChildren: './create-character/create-character.module.ts#CreateCharacterModule' },
+  {path: 'new-Character', loadChildren: './create-character/create-character.module#CreateCharacterModule' },
   {path: '**', redirectTo: '/characters' }
 ];
 
